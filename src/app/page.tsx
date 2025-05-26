@@ -1,19 +1,29 @@
 "use client"
 
 import Image from "next/image";
-import styles from "./page.module.css";
 import { useEffect, useReducer } from "react";
 import { CategoryReducer } from "@/reducers/category/CategoryReducer";
+import { ProductReducer } from "@/reducers/products/ProductReducer";
 
 export default function Home() {
 
-  const [categories, dispatch] = useReducer(CategoryReducer, [])
+  const [categories, dispatchCategory] = useReducer(CategoryReducer, [])
+  const [products, dispatchProduct] = useReducer(ProductReducer, []);
 
   useEffect(() => {
     //fetch to back
     //then.
     //TODO: Connect with back and dispatch data requested
-    dispatch({type:"loaded", categories: [{id: 1, name: "Tech"}]})
+    dispatchCategory({type:"loaded", categories: [{id: 1, name: "Tech"}]})
+    dispatchProduct({type:"loaded", products: [
+      {
+        id: 1,
+        name: "RTX 5070",
+        price: 1000,
+        description: "Tarjeta gráfica de Nvidia RTX 5070 con 12 GB de VRAM",
+        rate: 5
+      }
+    ]})
   }, [])
 
   return (

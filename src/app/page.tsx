@@ -1,29 +1,21 @@
 "use client"
 
 import Image from "next/image";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { CategoryReducer } from "@/reducers/category/CategoryReducer";
-import { ProductReducer } from "@/reducers/products/ProductReducer";
+import { ProductContext } from "@/contexts/ProductContext";
+import ProductCard from "@/components/ProductCard";
 
 export default function Home() {
 
   const [categories, dispatchCategory] = useReducer(CategoryReducer, [])
-  const [products, dispatchProduct] = useReducer(ProductReducer, []);
+  const {products} = useContext(ProductContext);
 
   useEffect(() => {
     //fetch to back
     //then.
     //TODO: Connect with back and dispatch data requested
     dispatchCategory({type:"loaded", categories: [{id: 1, name: "Tech"}]})
-    dispatchProduct({type:"loaded", products: [
-      {
-        id: 1,
-        name: "RTX 5070",
-        price: 1000,
-        description: "Tarjeta gráfica de Nvidia RTX 5070 con 12 GB de VRAM",
-        rate: 5
-      }
-    ]})
   }, [])
 
   return (
@@ -50,7 +42,9 @@ export default function Home() {
             )}
           </ul>
         </aside>
-        <main className="products__main"></main>
+        <main className="products__main">
+          {products.map(product => <ProductCard key={product.id} product={product}></ProductCard>)}
+        </main>
       </div>
   );
 }

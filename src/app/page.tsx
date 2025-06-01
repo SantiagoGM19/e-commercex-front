@@ -1,10 +1,9 @@
 "use client"
 
-import Image from "next/image";
 import { useContext, useEffect, useReducer } from "react";
 import { CategoryReducer } from "@/reducers/category/CategoryReducer";
 import { ProductContext } from "@/contexts/ProductContext";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/ProductCard/ProductCard";
 
 export default function Home() {
 
@@ -20,20 +19,6 @@ export default function Home() {
 
   return (
       <div className="products">
-        <header className="header">
-          <nav className="navbar">
-            <Image src="" alt="logo" width={100} height={100}></Image>
-            <div className="navbar__options">
-              <button className="navbar__user">
-                <Image src="" alt="user icon"></Image>
-              </button>
-              <div className="navbar__line"></div>
-              <button className="navbar__cart">
-                <Image src="" alt="shopping cart"></Image>
-              </button>
-            </div>
-          </nav>
-        </header>
         <aside className="products__filters">
           <h2>Categorias</h2>
           <ul>

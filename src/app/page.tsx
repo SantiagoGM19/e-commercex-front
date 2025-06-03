@@ -2,13 +2,13 @@
 
 import { useContext, useEffect, useReducer } from "react";
 import { CategoryReducer } from "@/reducers/category/CategoryReducer";
-import { ProductContext } from "@/contexts/ProductContext";
+import { ProductContext, ProductContextType } from "@/contexts/ProductContext";
 import ProductCard from "@/components/ProductCard/ProductCard";
 
 export default function Home() {
 
   const [categories, dispatchCategory] = useReducer(CategoryReducer, [])
-  const {products} = useContext(ProductContext);
+  const {products} = useContext(ProductContext) as ProductContextType;
 
   useEffect(() => {
     //fetch to back

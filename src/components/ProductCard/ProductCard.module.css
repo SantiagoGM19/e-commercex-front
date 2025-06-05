@@ -1,0 +1,7 @@
+.product{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 200px;
+    box-shadow: 4px 5px 15px 5px rgb(0 0 0 / 15%);
+}

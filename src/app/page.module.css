@@ -1,0 +1,19 @@
+.products{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    width: 100%;
+    height: calc(100vh - 60px);
+}
+
+.products__filters{
+
+}
+
+
+.products__main{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 100px;
+    row-gap: 50px;
+    padding: 100px;
+}

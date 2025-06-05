@@ -26,6 +26,41 @@ export const ProductContextProvider = ({children}: {children: React.ReactNode}):
                 price: 1000,
                 description: "Graphic Card RTX 5070 VRAM 12GB",
                 rate: 5
+              },
+              {
+                id: 2,
+                name: "RTX 5070",
+                price: 1000,
+                description: "Graphic Card RTX 5070 VRAM 12GB",
+                rate: 5
+              },
+              {
+                id: 3,
+                name: "RTX 5070",
+                price: 1000,
+                description: "Graphic Card RTX 5070 VRAM 12GB",
+                rate: 5
+              },
+              {
+                id: 4,
+                name: "RTX 5070",
+                price: 1000,
+                description: "Graphic Card RTX 5070 VRAM 12GB",
+                rate: 5
+              },
+              {
+                id: 5,
+                name: "RTX 5070",
+                price: 1000,
+                description: "Graphic Card RTX 5070 VRAM 12GB",
+                rate: 5
+              },
+              {
+                id: 6,
+                name: "RTX 5070",
+                price: 1000,
+                description: "Graphic Card RTX 5070 VRAM 12GB",
+                rate: 5
               }
             ]});
     },[])

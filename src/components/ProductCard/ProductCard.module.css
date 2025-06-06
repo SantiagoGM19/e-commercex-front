@@ -2,6 +2,40 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 200px;
+    width: 250px;
     box-shadow: 4px 5px 15px 5px rgb(0 0 0 / 15%);
+    border-radius: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.product:hover{
+    transform: scale(1.01);
+}
+
+/*TODO: Manage dynamic image size. It's possible the content change.*/
+.product__image{
+    width: 100%;
+}
+
+.likeIcon{
+    position: absolute;
+    
+}
+
+.product__details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+.product__description{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product__details > h2{
+    font-size: 25px;
 }

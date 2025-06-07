@@ -8,7 +8,6 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { IconButton } from "@mui/material";
 import { useState } from "react";
-import { red } from "@mui/material/colors";
 
 export default function ProductCard({product}: {product: Product}) {
 
@@ -27,12 +26,12 @@ export default function ProductCard({product}: {product: Product}) {
                 onClick={(e) => handleLike(e)}
                 sx={{color: isLike ? "red" : "inherit"}}
                 >
-                    {isLike ? <FavoriteIcon/> : <FavoriteBorderIcon/>} 
+                    {isLike ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
                 </IconButton>
                 <Image 
                 className={styles["product__image"]}
-                src="/rtx5070.jpg" 
-                alt="rtx 5070"
+                src={product.image}
+                alt={product.name}
                 width={250} 
                 height={250}/>
                 <hr />

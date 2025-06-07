@@ -22,44 +22,56 @@ export const ProductContextProvider = ({children}: {children: React.ReactNode}):
         dispatch({type:"loaded", products: [
               {
                 id: 1,
+                categoryId: 2,
                 name: "RTX 5070",
                 price: 1000,
                 description: "Graphic Card RTX 5070 VRAM 12GB",
+                image:"/rtx5070.jpg",
                 rate: 5
               },
               {
                 id: 2,
-                name: "RTX 5070",
+                categoryId: 2,
+                name: "Laptop X300",
                 price: 1000,
-                description: "Graphic Card RTX 5070 VRAM 12GB",
+                description: "Lapton X300 16GB RAM 1TB storage",
+                image:"/laptop.jpg",
                 rate: 5
               },
               {
                 id: 3,
-                name: "RTX 5070",
+                categoryId: 3,
+                name: "Blue armchair",
                 price: 1000,
-                description: "Graphic Card RTX 5070 VRAM 12GB",
+                description: "Blue armchair for living room",
+                image: "/armchair.jpg",
                 rate: 5
               },
               {
                 id: 4,
-                name: "RTX 5070",
+                categoryId: 4,
+                name: "Acoustic guitar",
                 price: 1000,
-                description: "Graphic Card RTX 5070 VRAM 12GB",
+                description: "Acoustic guitar metal strings brown body",
+                image:"/guitar.jpg",
                 rate: 5
               },
               {
                 id: 5,
-                name: "RTX 5070",
+                categoryId: 5,
+                name: "Purple pants",
                 price: 1000,
-                description: "Graphic Card RTX 5070 VRAM 12GB",
+                description: "Purple pants",
+                image:"/pants.jpg",
                 rate: 5
               },
               {
                 id: 6,
-                name: "RTX 5070",
+                categoryId: 5,
+                name: "t-shirts",
                 price: 1000,
-                description: "Graphic Card RTX 5070 VRAM 12GB",
+                description: "5-Group t-shirts for summer",
+                image:"/tshirts.jpg",
                 rate: 5
               }
             ]});

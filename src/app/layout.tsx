@@ -33,8 +33,8 @@ export default function RootLayout({
             <header className="header">
               <Navbar/>
             </header>
+            {children}
           </CategoryContextProvider>
-          {children}
         </ProductContextProvider>
       </body>
     </html>

@@ -8,10 +8,11 @@ import { Button, IconButton, Menu, MenuItem} from "@mui/material";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { grey } from "@mui/material/colors";
+import { Category } from "@/models/Category";
 
 export default function Navbar(){
 
-    const {categories} = useContext(CategoryContext) as CategoryContextType;
+    const {categories, setCategoryActive} = useContext(CategoryContext) as CategoryContextType;
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -29,6 +30,10 @@ export default function Navbar(){
     const handleClose = () => {
       setAnchorEl(null);
     }
+
+    const selectCategory = (category: Category) => {
+      setCategoryActive(category)
+    }
     
     return(
         <nav className={styles.Navbar}>
@@ -42,7 +47,9 @@ export default function Navbar(){
             {
             categories.slice(0,4).map(category =>
             <li key={category.id}>
-              <Button sx={{color: grey[900]}} key={category.id}>
+              <Button key={category.id}
+               sx={{color: grey[900]}}
+               onClick={() => selectCategory(category)} >
                 {category.name}
               </Button>
             </li>
@@ -74,7 +81,10 @@ export default function Navbar(){
               }}
               >
                 {categories.slice(4).map(category => 
-                <MenuItem key={category.id} onClick={handleClose}>
+                <MenuItem key={category.id} onClick={() => {
+                  selectCategory(category);
+                  handleClose();
+                  }}>
                   {category.name}
                 </MenuItem>)
                 }

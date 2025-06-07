@@ -3,38 +3,48 @@
 import { Category } from "@/models/Category"
 import { CategoryAction } from "@/reducers/category/CategoryAction"
 import { CategoryReducer } from "@/reducers/category/CategoryReducer"
-import { createContext, Dispatch, useEffect, useReducer } from "react"
+import { 
+    createContext,
+    Dispatch, 
+    SetStateAction, 
+    useEffect, 
+    useReducer, 
+    useState } from "react"
 
 export type CategoryContextType = {
     categories: Category[],
     dispatch: Dispatch<CategoryAction>
+    categoryActive: Category,
+    setCategoryActive: Dispatch<SetStateAction<Category>>,
 }
 
 export const CategoryContext = createContext<CategoryContextType | null>(null);
 
 export const CategoryContextProvider = ({children}: {children: React.ReactNode}): React.ReactNode => {
     const [categories, dispatch] = useReducer(CategoryReducer, [])
+    const [categoryActive, setCategoryActive] = useState({id: 1, name: "All"});
 
     useEffect(() => {
         //fetch to back
         //then.
         //TODO: Connect with back and dispatch data requested
+        setCategoryActive({id: 1, name: "Tech"})
         dispatch({type: "loaded", categories: [
             {
                 id: 1,
-                name: "Tech"
+                name: "All"
             },
             {
                 id: 2,
-                name: "Furniture"
+                name: "Tech"
             },
             {
                 id: 3,
-                name: "Music"
+                name: "Furniture"
             },
             {
                 id: 4,
-                name: "Clothes"
+                name: "Music"
             },
             {
                 id: 5,
@@ -44,11 +54,15 @@ export const CategoryContextProvider = ({children}: {children: React.ReactNode})
                 id: 6,
                 name: "Clothes"
             },
+            {
+                id: 7,
+                name: "Clothes"
+            },
         ]})
     }, [])
 
     return(
-        <CategoryContext.Provider value={{categories, dispatch}}>
+        <CategoryContext.Provider value={{categories, dispatch, categoryActive, setCategoryActive}}>
             {children}
         </CategoryContext.Provider>
     )

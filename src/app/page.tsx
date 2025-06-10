@@ -2,11 +2,11 @@
 
 import { useContext, useEffect, useState } from "react";
 import { ProductContext, ProductContextType } from "@/contexts/ProductContext";
-import ProductCard from "@/components/ProductCard/ProductCard";
+import {ProductCard} from "@/components/ProductCard";
 import styles from "./page.module.css";
 import { CategoryContext, CategoryContextType } from "@/contexts/CategoryContext";
 import { Product } from "@/models/Product";
-import { log } from "console";
+import { Filterbar } from "@/components/Filterbar";
 
 export default function Home() {
 
@@ -25,6 +25,7 @@ export default function Home() {
   return (
       <main className={styles.products}>
         <aside className="products__filters">
+          <Filterbar/>
         </aside>
         <section className={styles['products__main']}>
           {productsToShow.map(product => <ProductCard key={product.id} product={product}/>)}

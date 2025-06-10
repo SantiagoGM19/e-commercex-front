@@ -1,0 +1,14 @@
+.filters{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-left: 15px;
+}
+
+.price{
+    display: flex;
+}
+
+.priceInput{
+    appearance: textfield;
+}

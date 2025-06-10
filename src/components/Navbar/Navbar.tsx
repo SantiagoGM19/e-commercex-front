@@ -10,7 +10,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import { grey } from "@mui/material/colors";
 import { Category } from "@/models/Category";
 
-export default function Navbar(){
+export function Navbar(){
 
     const {categories, setCategoryActive} = useContext(CategoryContext) as CategoryContextType;
 
@@ -32,7 +32,7 @@ export default function Navbar(){
     }
 
     const selectCategory = (category: Category) => {
-      setCategoryActive(category)
+      setCategoryActive(category);
     }
     
     return(

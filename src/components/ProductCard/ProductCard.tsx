@@ -9,7 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { IconButton } from "@mui/material";
 import { useState } from "react";
 
-export default function ProductCard({product}: {product: Product}) {
+export function ProductCard({product}: {product: Product}) {
 
     const [isLike, setIsLike] = useState(false);
 
@@ -34,7 +34,7 @@ export default function ProductCard({product}: {product: Product}) {
                 alt={product.name}
                 width={250} 
                 height={250}/>
-                <hr />
+                
                 <div className={styles["product__details"]}>
                     <p className={styles["product__description"]}>{product.description}</p>
                     <h2>${product.price}</h2> 

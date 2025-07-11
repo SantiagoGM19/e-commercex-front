@@ -20,6 +20,10 @@ export interface DeletedProductAction{
     id: number
 }
 
+export interface FilterProductsAction{
+    type: "filter",
+}
+
 export type ProductAction = 
     | LoadedProductsAction
     | AddedProductAction 

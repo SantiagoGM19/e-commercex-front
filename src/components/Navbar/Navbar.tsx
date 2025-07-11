@@ -16,15 +16,9 @@ export function Navbar(){
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
-    const currentlyHovering = useRef(false);
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-      currentlyHovering.current = true;
       setAnchorEl(event.currentTarget);
-    }
-
-    const handleHover = () => {
-      currentlyHovering.current = true;
     }
 
     const handleClose = () => {
@@ -75,7 +69,6 @@ export function Navbar(){
               onClose={handleClose}
               slotProps={{
                 list: {
-                  onMouseEnter: handleHover,
                   'aria-labelledby': 'option-more'
                 }
               }}

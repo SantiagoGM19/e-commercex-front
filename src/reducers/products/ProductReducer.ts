@@ -24,6 +24,9 @@ export const ProductReducer = (state: Product[], action: ProductAction) => {
         case "deleted": {
             return state.filter(product => product.id !== action.id)
         }
+        case "filter": {
+            
+        }
         default:
             throw Error("Unknown action")
     }

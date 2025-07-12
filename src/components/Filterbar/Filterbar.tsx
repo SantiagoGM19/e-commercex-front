@@ -2,6 +2,7 @@ import { Button, FormControl, InputAdornment, InputLabel, Menu, MenuItem, Outlin
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import styles from './Filterbar.module.css';
 import { useState } from "react";
+import { grey } from "@mui/material/colors";
 
 export function Filterbar() {
 
@@ -29,8 +30,10 @@ export function Filterbar() {
         return clean;
     };
 
-    const handleClose = () => {
+    const handleClosePriceFilter = () => {
         setAnchorEl(null);
+        setMaxValue("");
+        setMinValue("");
     }
 
     const handleOpenPriceFilter = (event: React.MouseEvent<HTMLElement>) => {
@@ -39,12 +42,13 @@ export function Filterbar() {
 
     return(
         <section className={styles.filters}>
-            <h1>Filters</h1>
+            <h3>Filters</h3>
             <Button
             id="filter-price"
             variant="text"
             endIcon={<KeyboardArrowDownIcon />}
             onMouseEnter={handleOpenPriceFilter}
+            sx={{width: 100, color: grey[900]}}
             >
                 price
             </Button>
@@ -52,14 +56,25 @@ export function Filterbar() {
             id="filters-menu"
             anchorEl={anchorEl}
             open={open}
-            onClose={handleClose}
+            onClose={handleClosePriceFilter}
             slotProps={{
                 list: {
                     'aria-labelledby': 'filter-price'
                 }
             }}
             >
-                <MenuItem>
+                <MenuItem
+                disableRipple
+                sx={{
+                    backgroundColor: 'transparent',
+                    '&:hover': {
+                    backgroundColor: 'transparent',
+                    },
+                    '&.Mui-focusVisible': {
+                    backgroundColor: 'transparent',
+                    },
+                }}
+                >
                     <div className={styles.price}>
                         <FormControl sx={{mr:1}}>
                             <InputLabel htmlFor="adornment-min">Min</InputLabel>

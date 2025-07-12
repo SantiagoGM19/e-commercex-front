@@ -24,9 +24,9 @@ export default function Home() {
 
   return (
       <main className={styles.products}>
-        <aside className="products__filters">
+        <header className="products__filters">
           <Filterbar/>
-        </aside>
+        </header>
         <section className={styles['products__main']}>
           {productsToShow.map(product => <ProductCard key={product.id} product={product}/>)}
         </section>

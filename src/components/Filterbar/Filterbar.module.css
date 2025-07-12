@@ -1,8 +1,13 @@
 .filters{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: max-content max-content;
     gap: 30px;
     padding-left: 15px;
+    margin-bottom: 30px;
+}
+
+.filters h3{
+    align-self: center;
 }
 
 .price{

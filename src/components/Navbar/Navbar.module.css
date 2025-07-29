@@ -1,7 +1,7 @@
 .Navbar{
     /*Box model*/
     display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-columns: 5fr 1fr;
     align-items: center;
     height: 60px;
     box-sizing: border-box;

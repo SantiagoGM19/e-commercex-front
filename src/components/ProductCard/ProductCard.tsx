@@ -20,7 +20,7 @@ export function ProductCard({product}: {product: Product}) {
     }
 
     return(
-        <Link href={"/"} className={styles.product}>
+        <Link href={"/product-detail/"+product.id} className={styles.product}>
             <article>
                 <IconButton className={styles.likeIcon}
                 onClick={(e) => handleLike(e)}

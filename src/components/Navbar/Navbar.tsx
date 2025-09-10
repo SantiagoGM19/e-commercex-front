@@ -14,37 +14,56 @@ export function Navbar(){
 
     const {categories, setCategoryActive} = useContext(CategoryContext) as CategoryContextType;
 
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-      setAnchorEl(event.currentTarget);
-    }
-
-    const handleClose = () => {
-      setAnchorEl(null);
-    }
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const selectCategory = (category: Category) => {
       setCategoryActive(category);
+      setMenuOpen(false); 
     }
-    
+
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 600;
+
     return(
         <nav className={styles.Navbar}>
           <Image 
-          className={styles['Navbar__logoImage']}
-          src="next.svg" 
-          alt="logo"
-          width={100}
-          height={100}/>
-          <div className={styles['Navbar__options']}>
-            <IconButton>
-              <AccountCircleOutlinedIcon sx={{color: grey[900], fontSize: 30}}>
-              </AccountCircleOutlinedIcon>
+            className={styles.Navbar__logoImage}
+            src="next.svg" 
+            alt="logo"
+            width={60}
+            height={60}
+          />
+          {isMobile && (
+            <button
+              className={styles.Navbar__burger}
+              aria-label="Abrir menú"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <span className={styles.Navbar__burgerBar}></span>
+              <span className={styles.Navbar__burgerBar}></span>
+              <span className={styles.Navbar__burgerBar}></span>
+            </button>
+          )}
+          <ul
+            className={styles.Navbar__categories}
+            style={isMobile ? {display: menuOpen ? 'flex' : 'none'} : {}}
+          >
+            {categories.map((category) => (
+              <li key={category.id}>
+                <button
+                  className={styles.Navbar__categoryBtn}
+                  onClick={() => selectCategory(category)}
+                >
+                  {category.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.Navbar__options}>
+            <IconButton className={styles.Navbar__iconBtn}>
+              <AccountCircleOutlinedIcon sx={{color: grey[900], fontSize: 30}} />
             </IconButton>
-            <IconButton >
-              <ShoppingCartOutlinedIcon sx={{color: grey[900], fontSize: 30}}>
-              </ShoppingCartOutlinedIcon>
+            <IconButton className={styles.Navbar__iconBtn}>
+              <ShoppingCartOutlinedIcon sx={{color: grey[900], fontSize: 30}} />
             </IconButton>
           </div>
         </nav>

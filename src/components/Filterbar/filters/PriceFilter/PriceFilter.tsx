@@ -32,8 +32,10 @@ export function PriceFilter(){
 
     const handleClose = () => {
         setAnchorEl(null);
-        setMaxValue("");
-        setMinValue("");
+    }
+
+    const handleApply = () => {
+        handleClose();
     }
 
     const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -41,67 +43,78 @@ export function PriceFilter(){
     }
 
     return(
-        <div>
-            <Button
-            id="filter-price"
-            variant="text"
-            endIcon={<KeyboardArrowDownIcon />}
-            onMouseEnter={handleOpen}
-            sx={{width: 100, color: grey[900]}}
-            >
-                price
-            </Button>
-            <Menu
-            id="filters-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            slotProps={{
-                list: {
-                    'aria-labelledby': 'filter-price'
-                }
-            }}
-            >
-                <MenuItem
-                disableRipple
-                sx={{
-                    backgroundColor: 'transparent',
-                    '&:hover': {
-                    backgroundColor: 'transparent',
-                    },
-                    '&.Mui-focusVisible': {
-                    backgroundColor: 'transparent',
-                    },
-                }}
-                >
-                    <div className={styles.price}>
-                        <FormControl sx={{mr:1}}>
-                            <InputLabel htmlFor="adornment-min">Min</InputLabel>
-                            <OutlinedInput
-                            className={styles.priceInput}
-                            id="adornment-min"
-                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                            label="min"
-                            onChange={handleMinValueChange}
-                            value={minValue}
-                            />
-                        </FormControl>
-                        <FormControl>
-                            <InputLabel htmlFor="adornment-max">Max</InputLabel>
-                            <OutlinedInput 
-                            className={styles.priceInput}
-                            id="adornment-max"
-                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                            label="max"
-                            onChange={handleMaxValueChange}
-                            value={maxValue}
-                            />
-                        </FormControl>
-                    </div>
-                </MenuItem>
-            </Menu>
+        <div
+            onMouseLeave={handleClose}
+        >
+                <div>
+                    <Button
+                        id="filter-price"
+                        variant="text"
+                        endIcon={<KeyboardArrowDownIcon />}
+                        onClick={handleOpen}
+                        sx={{width: 100, color: grey[900]}}
+                    >
+                        price
+                    </Button>
+                    <Menu
+                        id="filters-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        slotProps={{
+                            list: {
+                                'aria-labelledby': 'filter-price'
+                            }
+                        }}
+                    >
+                        <MenuItem
+                            disableRipple
+                            sx={{
+                                backgroundColor: 'transparent',
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                },
+                                '&.Mui-focusVisible': {
+                                    backgroundColor: 'transparent',
+                                },
+                            }}
+                        >
+                            <div className={styles.priceColumn}>
+                                <FormControl sx={{mb:2}}>
+                                    <InputLabel htmlFor="adornment-min">Min</InputLabel>
+                                    <OutlinedInput
+                                        className={styles.priceInput}
+                                        id="adornment-min"
+                                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                        label="min"
+                                        onChange={handleMinValueChange}
+                                        value={minValue}
+                                    />
+                                </FormControl>
+                                <FormControl sx={{mb:2}}>
+                                    <InputLabel htmlFor="adornment-max">Max</InputLabel>
+                                    <OutlinedInput 
+                                        className={styles.priceInput}
+                                        id="adornment-max"
+                                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                        label="max"
+                                        onChange={handleMaxValueChange}
+                                        value={maxValue}
+                                    />
+                                </FormControl>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleApply}
+                                    sx={{width: '100%'}}
+                                >
+                                    Aplicar
+                                </Button>
+                            </div>
+                        </MenuItem>
+                    </Menu>
+                </div>
         </div>
-    )
-
+            );
 
 }

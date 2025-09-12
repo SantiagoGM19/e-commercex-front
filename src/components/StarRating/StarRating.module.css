@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  font-family: system-ui, sans-serif;
+  line-height: 1;
+  user-select: none;
+}
+.wrapper.readOnly { cursor: default; }
+.wrapper.interactive { cursor: pointer; }
+
+.base, .fill {
+  display: flex;
+  top: 0;
+  left: 0;
+}
+.base span, .fill span {
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.base { color: #d3d3d3; }
+.fill {
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffb400;
+  pointer-events: none;
+}
+
+.sm span { font-size: .85rem; }
+.md span { font-size: 1.05rem; }
+.lg span { font-size: 1.5rem; }
+
+.valueText {
+  margin-left: .5rem;
+  font-size: .85rem;
+  color: #555;
+}
+
+.wrapper:focus-visible {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

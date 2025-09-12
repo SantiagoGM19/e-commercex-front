@@ -1,0 +1,194 @@
+.detailLayout {
+  --gap: 2rem;
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: 1fr;
+  padding: 2rem 1rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 860px) {
+  .detailLayout {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+    align-items: flex-start;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  background: #f6f6f6;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 360px;
+}
+
+.mainImage {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+}
+
+/* Skeleton states */
+.skeleton {
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+  border-radius: 12px;
+  min-height: 360px;
+}
+
+.skeletonLine, .skeletonPrice, .skeletonButton, .skeletonIcon, .skeletonParagraph {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+  border-radius: 8px;
+}
+
+.skeletonLine { height: 20px; }
+.skeletonParagraph { height: 110px; margin-top: 1.25rem; }
+.skeletonPrice { height: 48px; width: 220px; margin-top: 1rem; }
+.skeletonButton { height: 52px; flex: 1; }
+.skeletonIcon { width: 52px; height: 52px; }
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.productName {
+  font-size: clamp(1.65rem, 2.5vw, 2.4rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -.5px;
+  margin: 0;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: .875rem;
+  color: #666;
+}
+
+.rating {
+  font-size: .95rem;
+  color: #ffb400;
+  letter-spacing: 1px;
+}
+
+.sku {
+  background: #fafafa;
+  padding: .35rem .6rem;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #333;
+  margin: 0;
+}
+
+.price {
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  font-weight: 600;
+  color: #111;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryCta, .secondaryCta {
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: background .25s, color .25s, box-shadow .25s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  isolation: isolate;
+}
+
+.primaryCta {
+  background: #111;
+  color: #fff;
+  padding: .95rem 1.6rem;
+  box-shadow: 0 4px 16px -4px rgba(0,0,0,.25);
+}
+.primaryCta:hover {
+  background: #222;
+}
+.primaryCta:active {
+  transform: translateY(1px);
+}
+.primaryCta:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.secondaryCta {
+  background: #fff;
+  color: #444;
+  padding: .85rem 1.25rem;
+  border: 1px solid #ddd;
+  min-width: 52px;
+}
+.secondaryCta:hover {
+  background: #f3f3f3;
+}
+.secondaryCta:focus-visible {
+  outline: 2px solid #666;
+  outline-offset: 2px;
+}
+
+.emptyState {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.emptyState h1 {
+  font-size: 1.8rem;
+  margin-bottom: .75rem;
+}
+.emptyState p {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+.backLink {
+  display: inline-block;
+  padding: .75rem 1.25rem;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: .95rem;
+}
+.backLink:hover { background: #222; }

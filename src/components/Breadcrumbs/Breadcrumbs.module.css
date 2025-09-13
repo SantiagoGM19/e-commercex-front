@@ -1,0 +1,31 @@
+.breadcrumbs {
+  font-size: .8rem;
+  color: #555;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: .25rem;
+  align-items: center;
+}
+.item { display: flex; align-items: center; }
+.link {
+  text-decoration: none;
+  color: #444;
+  transition: color .2s;
+}
+.link:hover { color: #000; }
+.current { color: #000; font-weight: 500; }
+.separator { margin: 0 .4rem; color: #aaa; }
+
+/* Focus styles for accessibility */
+.link:focus-visible {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

@@ -3,6 +3,9 @@
 import Image from "next/image";
 import { useProduct } from '@/hooks/useProduct';
 import { StarRating } from '@/components/StarRating';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { CategoryContext, CategoryContextType } from '@/contexts/CategoryContext';
+import { useContext, useMemo } from 'react';
 import styles from './productDetail.module.css';
 
 interface ProductDetailClientProps {
@@ -11,6 +14,12 @@ interface ProductDetailClientProps {
 
 export default function ProductDetailClient({ productId }: ProductDetailClientProps) {
   const { product, loading, error } = useProduct(productId);
+  const { categories } = useContext(CategoryContext) as CategoryContextType;
+
+  const category = useMemo(() => {
+    if (!product) return null;
+    return categories.find(c => c.id === product.categoryId) || null;
+  }, [product, categories]);
 
   if (loading) {
     return (
@@ -44,6 +53,15 @@ export default function ProductDetailClient({ productId }: ProductDetailClientPr
 
   return (
     <article className={styles.detailLayout}>
+      <div style={{gridColumn: '1 / -1'}}>
+        <Breadcrumbs
+          items={[
+            { label: 'Inicio', href: '/' },
+            category ? { label: category.name, href: `/?category=${category.slug}` } : { label: 'Categoría', href: '/' },
+            { label: product.name }
+          ]}
+        />
+      </div>
       <div className={styles.mediaColumn}>
         <div className={styles.imageWrapper}>
           <Image
